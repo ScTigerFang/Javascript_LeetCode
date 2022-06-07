@@ -1,9 +1,35 @@
+
 /**
+ * https://leetcode.com/problems/sort-colors/
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
+//First Attempt, problem is need to modify the numbers in place instead, and can't just do .sort
 var sortColors = function (nums) {
+    //needs to be in order of red = 0 white = 1 and blue = 2
+    let red = [];
+    let white = [];
+    let blue = [];
+    for (let i = 0; i < nums.length; i++) {
+        switch (nums[i]) {
+            case 0:
+                red.push(nums[i]);
+                break;
+            case 1:
+                white.push(nums[i]);
+                break;
+            default:
+                blue.push(nums[i]);
+        };// end of switch            
+    };// end of loop
+
+    let nums2 = [];
+    nums2 = nums2.concat(red, white, blue);
+    return nums2;
+};
+
+var sortColors2 = function (nums) {
     //needs to be in order of red = 0 white = 1 and blue = 2
     let maxIndex = nums.length - 1;// keeps track of right pointer
     let zeroPointer = 0; // Keeps track of leftPointer
@@ -21,5 +47,6 @@ var sortColors = function (nums) {
     }
     return nums;
 };
-
 console.log(sortColors([2, 0, 2, 1, 1, 0]));
+
+console.log(sortColors2([2, 0, 2, 1, 1, 0]));
